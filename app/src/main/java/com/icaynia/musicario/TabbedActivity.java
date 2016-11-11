@@ -204,7 +204,7 @@ public class TabbedActivity extends AppCompatActivity {
                 case 0:
                     return "HOME";
                 case 1:
-                    return "MUSICLIST";
+                    return "MY MUSIC";
                 case 2:
                     return "NOWLIST";
                 case 3:
