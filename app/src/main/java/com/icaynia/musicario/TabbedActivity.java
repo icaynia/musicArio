@@ -43,6 +43,8 @@ public class TabbedActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("MusicArio");
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -54,6 +56,7 @@ public class TabbedActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        /* 今すぐはfabが必要がない。
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +65,8 @@ public class TabbedActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        */
 
     }
 
@@ -144,6 +149,7 @@ public class TabbedActivity extends AppCompatActivity {
 
         public void onFragmentHome(View v) {
             //home
+            new HomeFragment(v);
         }
 
         public void onFragmentMusicList(View v) {
