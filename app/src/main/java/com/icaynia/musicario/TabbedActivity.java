@@ -157,7 +157,7 @@ public class TabbedActivity extends AppCompatActivity {
 
         public void onFragmentHome(View v) {
             //home
-            new HomeFragment(v);
+            new HomeFragment(getContext(), v);
         }
 
         public void onFragmentMusicList(View v) {
