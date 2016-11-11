@@ -10,5 +10,6 @@ public class Global extends Application {
     // 次の変数は公共変数になければなりません。
     // 다음 변수들은 공용 변수들이 되어야 합니다.
 
-
+    /* Important variables */
+    public MusicBar musicBar;
 }

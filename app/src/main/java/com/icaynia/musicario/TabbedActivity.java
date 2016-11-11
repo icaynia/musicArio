@@ -67,6 +67,14 @@ public class TabbedActivity extends AppCompatActivity {
         });
 
         */
+        // global initialize
+        Global global = (Global) getApplication();
+
+        // musicBar initialize
+        global.musicBar = (MusicBar) findViewById(R.id.musicBar);
+
+
+
 
     }
 
