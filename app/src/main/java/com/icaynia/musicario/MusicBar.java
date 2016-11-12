@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * Created by icaynia on 2016. 11. 12..
@@ -17,6 +18,8 @@ public class MusicBar extends LinearLayout {
     private LinearLayout backButton;
     private LinearLayout playButton;
     private LinearLayout nextButton;
+
+    private TextView title;
 
     public MusicBar(Context context) {
         super(context);
@@ -41,6 +44,11 @@ public class MusicBar extends LinearLayout {
         addView(v);
 
         albumView = (LinearLayout) findViewById(R.id.musicbar_album_view);
+        title = (TextView) findViewById(R.id.musicbar_name_view);
+        backButton = (LinearLayout) findViewById(R.id.musicbar_backbutton);
+        playButton = (LinearLayout) findViewById(R.id.musicbar_playbutton);
+        nextButton = (LinearLayout) findViewById(R.id.musicbar_nextbutton);
+
         albumView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
