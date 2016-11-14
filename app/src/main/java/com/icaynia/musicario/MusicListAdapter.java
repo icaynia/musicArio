@@ -66,6 +66,7 @@ public class MusicListAdapter extends BaseAdapter {
         }
 
         album = (ImageView) convertView.findViewById(R.id.view_musiclist_row_album);
+        album.setImageDrawable(activity.getResources().getDrawable(android.R.drawable.ic_menu_report_image));
         TextView title = (TextView) convertView.findViewById(R.id.view_musiclist_row_title);
         TextView artist = (TextView) convertView.findViewById(R.id.view_musiclist_row_artist);
 

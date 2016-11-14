@@ -86,11 +86,13 @@ public class MusicBar extends LinearLayout implements View.OnClickListener {
     public void updatePlayingInfo() {
         if (global.nowPlaying == null) {
             title.setText("No Music");
+            setPause();
         } else {
             title.setText(global.nowPlaying.artist + " - " + global.nowPlaying.title);
             Bitmap bitmap = getAlbumImage(activity, Integer.parseInt(global.nowPlaying.albumid), 170);
             if (bitmap != null)
                 albumView.setImageBitmap(bitmap);
+            setPlay();
         }
     }
 
@@ -101,15 +103,25 @@ public class MusicBar extends LinearLayout implements View.OnClickListener {
                 onMusicPlayerActivity();
                 break;
             case R.id.musicbar_pausebutton:
-                v.setVisibility(View.GONE);
-                playButton.setVisibility(View.VISIBLE);
+                setPause();
+                global.mediaPlayer.pause();
                 break;
             case R.id.musicbar_playbutton:
-                v.setVisibility(View.GONE);
-                pauseButton.setVisibility(View.VISIBLE);
+                setPlay();
+                global.mediaPlayer.start();
                 break;
 
         }
+    }
+
+    public void setPlay() {
+        playButton.setVisibility(View.GONE);
+        pauseButton.setVisibility(View.VISIBLE);
+    }
+
+    public void setPause() {
+        playButton.setVisibility(View.VISIBLE);
+        pauseButton.setVisibility(View.GONE);
     }
 
     private static final BitmapFactory.Options options = new BitmapFactory.Options();
