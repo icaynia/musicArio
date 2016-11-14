@@ -26,7 +26,7 @@ public class HomeFragment {
     }
 
     public void viewInitialize() {
-        
+
     }
 
     public void onMusicPlayerActivity() {
