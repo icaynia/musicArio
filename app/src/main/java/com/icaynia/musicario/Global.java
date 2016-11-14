@@ -3,7 +3,9 @@ package com.icaynia.musicario;
 import android.app.Application;
 import android.database.Cursor;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -17,7 +19,10 @@ public class Global extends Application {
 
     /* Important variables */
     public MusicBar musicBar;
-    public MediaPlayer mediaPlayer;
+
+    /* music play */
+    public MediaPlayer mediaPlayer = new MediaPlayer();
+
     public ArrayList<MusicDto> mediaList;
 
     public void getMusicList(){
@@ -41,6 +46,43 @@ public class Global extends Application {
             mediaList.add(musicDto);
         }
         cursor.close();
+    }
+
+    public void playMusic(MusicDto musicDto) {
+        try {
+            //seekBar.setProgress(0);
+            //title.setText(musicDto.getArtist()+" - "+musicDto.getTitle());
+            Uri musicURI = Uri.withAppendedPath(
+                    MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, ""+musicDto.id);
+            mediaPlayer.reset();
+            mediaPlayer.setDataSource(this, musicURI);
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+            //seekBar.setMax(mediaPlayer.getDuration());
+            /*
+            if(mediaPlayer.isPlaying()){
+                play.setVisibility(View.GONE);
+                pause.setVisibility(View.VISIBLE);
+            }else{
+                play.setVisibility(View.VISIBLE);
+                pause.setVisibility(View.GONE);
+            }
+            */
+
+
+            //Bitmap bitmap = BitmapFactory.decodeFile(getCoverArtPath(Long.parseLong(musicDto.getAlbumId()),getApplication()));
+            //album.setImageBitmap(bitmap);
+
+        }
+        catch (Exception e) {
+            Log.e("SimplePlayer", e.getMessage());
+        }
+    }
+
+    public void stopMusic() {
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+        }
     }
 
 }

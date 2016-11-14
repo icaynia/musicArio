@@ -3,6 +3,7 @@ package com.icaynia.musicario;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -13,7 +14,7 @@ public class MusicListFragment {
     private Context context;
     private View v;
     private String TAG = "MusicListFragment";
-    private ListView list;
+    private ListView listView;
     private Global global;
 
 
@@ -26,7 +27,17 @@ public class MusicListFragment {
 
     private void viewInitialize() {
         global = ((TabbedActivity)context).global;
-        list = (ListView) v.findViewById(R.id.fragment_musiclist_listView);
+        listView = (ListView) v.findViewById(R.id.fragment_musiclist_listView);
+
+        MusicListAdapter adapter = new MusicListAdapter(((TabbedActivity)context), global.mediaList);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                global.playMusic(global.mediaList.get(position));
+            }
+        });
 
     }
 

@@ -1,12 +1,15 @@
 package com.icaynia.musicario;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import java.util.List;
 import java.util.zip.Inflater;
@@ -26,6 +29,7 @@ public class MusicListAdapter extends BaseAdapter {
     public MusicListAdapter(Activity activity, List<MusicDto> list) {
         this.list = list;
         this.activity = activity;
+        inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -50,6 +54,15 @@ public class MusicListAdapter extends BaseAdapter {
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             convertView.setLayoutParams(layoutParams);
         }
+
+        ImageView album = (ImageView) convertView.findViewById(R.id.view_musiclist_row_album);
+        TextView title = (TextView) convertView.findViewById(R.id.view_musiclist_row_title);
+        TextView artist = (TextView) convertView.findViewById(R.id.view_musiclist_row_artist);
+
+        title.setText(list.get(position).title);
+        artist.setText(list.get(position).artist);
+
+        return convertView;
 
 
     }
