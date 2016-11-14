@@ -20,13 +20,13 @@ public class HomeFragment {
     public HomeFragment(Context _context, View _v) {
         context = _context;
         v = _v;
-        Log.e(TAG, "HomeFragment is created.");
+        Log.i(TAG, "HomeFragment is created.");
 
         viewInitialize();
     }
 
     public void viewInitialize() {
-
+        
     }
 
     public void onMusicPlayerActivity() {

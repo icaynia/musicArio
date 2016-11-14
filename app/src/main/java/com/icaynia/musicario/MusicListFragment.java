@@ -21,7 +21,7 @@ public class MusicListFragment {
     public MusicListFragment(Context _context, View _v) {
         this.context = _context;
         this.v = _v;
-        Log.d(TAG, "MusicListFragment is created.");
+        Log.i(TAG, "MusicListFragment is created.");
         viewInitialize();
     }
 
