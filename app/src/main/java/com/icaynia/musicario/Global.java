@@ -2,6 +2,8 @@ package com.icaynia.musicario;
 
 import android.app.Application;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -22,6 +24,8 @@ public class Global extends Application {
 
     /* music play */
     public MediaPlayer mediaPlayer = new MediaPlayer();
+    public MusicDto nowPlaying = null;
+
 
     public ArrayList<MusicDto> mediaList;
 
@@ -51,6 +55,7 @@ public class Global extends Application {
 
     public void playMusic(MusicDto musicDto) {
         try {
+            this.nowPlaying = musicDto;
             //seekBar.setProgress(0);
             //title.setText(musicDto.getArtist()+" - "+musicDto.getTitle());
             Uri musicURI = Uri.withAppendedPath(
@@ -60,6 +65,7 @@ public class Global extends Application {
             mediaPlayer.prepare();
             mediaPlayer.start();
             //seekBar.setMax(mediaPlayer.getDuration());
+
             /*
             if(mediaPlayer.isPlaying()){
                 play.setVisibility(View.GONE);
@@ -71,8 +77,6 @@ public class Global extends Application {
             */
 
 
-            //Bitmap bitmap = BitmapFactory.decodeFile(getCoverArtPath(Long.parseLong(musicDto.getAlbumId()),getApplication()));
-            //album.setImageBitmap(bitmap);
 
         }
         catch (Exception e) {
@@ -80,10 +84,5 @@ public class Global extends Application {
         }
     }
 
-    public void stopMusic() {
-        if (mediaPlayer.isPlaying()) {
-            mediaPlayer.stop();
-        }
-    }
 
 }

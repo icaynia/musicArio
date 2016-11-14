@@ -32,10 +32,12 @@ public class MusicListFragment {
         MusicListAdapter adapter = new MusicListAdapter(((TabbedActivity)context), global.mediaList);
         listView.setAdapter(adapter);
 
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 global.playMusic(global.mediaList.get(position));
+                global.musicBar.updatePlayingInfo();
             }
         });
 
