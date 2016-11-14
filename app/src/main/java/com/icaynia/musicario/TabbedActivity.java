@@ -19,6 +19,9 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class TabbedActivity extends AppCompatActivity {
 
     /**
@@ -30,23 +33,18 @@ public class TabbedActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     private ViewPager mViewPager;
-
+    private ArrayList<HashMap<String, String>> list;
+    public Global global;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabbed);
 
+        /* layout */
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("MusicArio");
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
@@ -56,22 +54,13 @@ public class TabbedActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        /* 今すぐはfabが必要がない。
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
-        */
         // global initialize
-        Global global = (Global) getApplication();
+        global = (Global) getApplication();
 
         // musicBar initialize
         global.musicBar = (MusicBar) findViewById(R.id.musicBar);
+        //global.getMusicList();
 
 
 
@@ -162,6 +151,7 @@ public class TabbedActivity extends AppCompatActivity {
 
         public void onFragmentMusicList(View v) {
             //MusicList
+            new MusicListFragment(getContext(), v);
         }
 
         public void onFragmentNowList(View v) {
