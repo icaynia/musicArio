@@ -60,6 +60,7 @@ public class TabbedActivity extends AppCompatActivity {
 
         // musicBar initialize
         global.musicBar = (MusicBar) findViewById(R.id.musicBar);
+        global.musicBar.setActivity(this);
         global.getMusicList();
     }
 

@@ -3,14 +3,14 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="80dp">
 
-    <LinearLayout
+    <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="#1d418e"
         android:id="@+id/musicbar_album_view"
         android:orientation="vertical">
 
-    </LinearLayout>
+    </ImageView>
 
     <LinearLayout
         android:layout_width="match_parent"
