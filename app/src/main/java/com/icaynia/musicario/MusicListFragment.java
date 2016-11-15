@@ -38,6 +38,7 @@ public class MusicListFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 global.playMusic(position);
+
             }
         });
 

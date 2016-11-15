@@ -91,7 +91,7 @@ public class MusicBar extends LinearLayout implements View.OnClickListener {
             Bitmap bitmap = getAlbumImage(activity, Integer.parseInt(global.nowPlaying.albumid), 170);
             if (bitmap != null)
                 albumView.setImageBitmap(bitmap);
-            if (global.mediaPlayer.isPlaying()) {
+            if (global.musicSrv.isPlaying()) {
                 setPlay();
             } else {
                 setPause();
@@ -107,11 +107,11 @@ public class MusicBar extends LinearLayout implements View.OnClickListener {
                 break;
             case R.id.musicbar_pausebutton:
                 setPause();
-                global.mediaPlayer.pause();
+                global.musicSrv.pause();
                 break;
             case R.id.musicbar_playbutton:
                 setPlay();
-                global.mediaPlayer.start();
+                global.musicSrv.start();
                 break;
 
         }

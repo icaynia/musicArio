@@ -17,6 +17,7 @@ import java.io.File;
  */
 public class musicService extends Service {
     public MediaPlayer mediaPlayer = new MediaPlayer();
+    public boolean playing = false;
     public int position;
 
     //binder
@@ -99,5 +100,21 @@ public class musicService extends Service {
 
     public void playMusic() {
         new Thread(task).start();
+        playing = true;
+    }
+
+
+    public void start() {
+        mediaPlayer.start();
+        playing = true;
+    }
+
+    public void pause() {
+        mediaPlayer.pause();
+        playing = false;
+    }
+
+    public boolean isPlaying() {
+        return playing;
     }
 }

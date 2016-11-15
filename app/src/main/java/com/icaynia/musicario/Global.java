@@ -44,7 +44,9 @@ public class Global extends Application {
     public void playMusic(int id) {
         this.nowPlaying = this.mediaList.get(id);
         this.musicBar.updatePlayingInfo();
+        this.musicBar.setPlay();
         this.musicSrv.playMusic();
+
 
     }
 
