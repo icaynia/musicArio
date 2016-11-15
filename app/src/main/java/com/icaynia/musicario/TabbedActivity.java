@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,13 +35,11 @@ public class TabbedActivity extends AppCompatActivity {
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
-    private ArrayList<HashMap<String, String>> list;
     public Global global;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabbed);
-
         /* layout */
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,11 +56,13 @@ public class TabbedActivity extends AppCompatActivity {
 
         // global initialize
         global = (Global) getApplication();
-
         // musicBar initialize
         global.musicBar = (MusicBar) findViewById(R.id.musicBar);
-        global.musicBar.setActivity(this);
+        global.musicBar.setActivity(TabbedActivity.this);
         global.getMusicList();
+
+
+        global.musicBar.updatePlayingInfo();
     }
 
 
@@ -199,5 +200,7 @@ public class TabbedActivity extends AppCompatActivity {
             }
             return null;
         }
+
+
     }
 }

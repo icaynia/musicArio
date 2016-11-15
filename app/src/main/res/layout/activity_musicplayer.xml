@@ -16,22 +16,40 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:id="@+id/musicplayer_title"
-            android:orientation="horizontal"
-            android:background="#0a103a">
+            android:id="@+id/musicplayer_titleBox"
+            android:orientation="vertical"
+            android:background="#0a103a"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/musicplayer_titleText"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/musicplayer_artistText"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/musicplayer_album"
+            android:id="@+id/musicplayer_albumBox"
             android:orientation="vertical"
-            android:background="#1d418e"
-            android:layout_alignParentBottom="true"
+            android:background="#3d80b1"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/musicplayer_titleBox"
+            android:layout_above="@+id/musicplayer_controller">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/musicplayer_albumImage"/>
 
         </LinearLayout>
 

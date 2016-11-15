@@ -22,7 +22,7 @@ import java.io.IOException;
  * Created by icaynia on 2016. 11. 12..
  */
 public class MusicBar extends LinearLayout implements View.OnClickListener {
-    Activity activity;
+    private Activity activity;
 
     private ImageView albumView;
     private LinearLayout titleView;
@@ -54,7 +54,7 @@ public class MusicBar extends LinearLayout implements View.OnClickListener {
         activity = _activity;
     }
 
-    private void viewInitialize() {
+    public void viewInitialize() {
         String infService = Context.LAYOUT_INFLATER_SERVICE;
         LayoutInflater li = (LayoutInflater) getContext().getSystemService(infService);
         View v = li.inflate(R.layout.view_musicbar, this, false);
@@ -74,8 +74,6 @@ public class MusicBar extends LinearLayout implements View.OnClickListener {
         nextButton.setOnClickListener(this);
 
         global = (Global) getContext().getApplicationContext();
-
-        updatePlayingInfo();
     }
 
     private void onMusicPlayerActivity() {
