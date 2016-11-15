@@ -30,6 +30,13 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
+        <service
+            android:name=".musicService"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.icaynia.musicario" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

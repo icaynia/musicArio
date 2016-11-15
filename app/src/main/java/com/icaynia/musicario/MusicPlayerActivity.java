@@ -38,7 +38,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
         controllerView = (LinearLayout) findViewById(R.id.musicplayer_controller);
 
-
         global = (Global) getApplication();
         updateSongInfo();
     }

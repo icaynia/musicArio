@@ -1,6 +1,7 @@
 package com.icaynia.musicario;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,8 +37,7 @@ public class MusicListFragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                global.playMusic(global.mediaList.get(position));
-                global.musicBar.updatePlayingInfo();
+                global.playMusic(position);
             }
         });
 

@@ -82,6 +82,7 @@ public class MusicBar extends LinearLayout implements View.OnClickListener {
     }
 
     public void updatePlayingInfo() {
+        /* 아예 없을 때 */
         if (global.nowPlaying == null) {
             title.setText("No Music");
             setPause();
@@ -90,7 +91,11 @@ public class MusicBar extends LinearLayout implements View.OnClickListener {
             Bitmap bitmap = getAlbumImage(activity, Integer.parseInt(global.nowPlaying.albumid), 170);
             if (bitmap != null)
                 albumView.setImageBitmap(bitmap);
-            setPlay();
+            if (global.mediaPlayer.isPlaying()) {
+                setPlay();
+            } else {
+                setPause();
+            }
         }
     }
 

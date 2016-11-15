@@ -1,5 +1,8 @@
 package com.icaynia.musicario;
 
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -56,6 +59,7 @@ public class TabbedActivity extends AppCompatActivity {
 
         // global initialize
         global = (Global) getApplication();
+        global.initSetting();
         // musicBar initialize
         global.musicBar = (MusicBar) findViewById(R.id.musicBar);
         global.musicBar.setActivity(TabbedActivity.this);
@@ -64,6 +68,7 @@ public class TabbedActivity extends AppCompatActivity {
 
         global.musicBar.updatePlayingInfo();
     }
+
 
 
     @Override
@@ -200,7 +205,7 @@ public class TabbedActivity extends AppCompatActivity {
             }
             return null;
         }
-
-
     }
+
+
 }

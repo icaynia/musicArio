@@ -1,11 +1,16 @@
 package com.icaynia.musicario;
 
 import android.app.Application;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.IBinder;
 import android.provider.MediaStore;
 import android.util.Log;
 
@@ -19,8 +24,15 @@ public class Global extends Application {
     // 次の変数は公共変数になければなりません。
     // 다음 변수들은 공용 변수들이 되어야 합니다.
 
+    //service
+    public musicService musicSrv;
+    private Intent playIntent;
+
+
+
     /* Important variables */
     public MusicBar musicBar;
+
 
     /* music play */
     public MediaPlayer mediaPlayer = new MediaPlayer();
@@ -29,6 +41,12 @@ public class Global extends Application {
 
     public ArrayList<MusicDto> mediaList;
 
+    public void playMusic(int id) {
+        this.nowPlaying = this.mediaList.get(id);
+        this.musicBar.updatePlayingInfo();
+        this.musicSrv.playMusic();
+
+    }
 
     public void getMusicList(){
         mediaList = new ArrayList<>();
@@ -53,34 +71,28 @@ public class Global extends Application {
         cursor.close();
     }
 
-    public void playMusic(MusicDto musicDto) {
-        try {
-            this.nowPlaying = musicDto;
-            //seekBar.setProgress(0);
-            //title.setText(musicDto.getArtist()+" - "+musicDto.getTitle());
-            Uri musicURI = Uri.withAppendedPath(
-                    MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, ""+musicDto.id);
-            mediaPlayer.reset();
-            mediaPlayer.setDataSource(this, musicURI);
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-            //seekBar.setMax(mediaPlayer.getDuration());
+    private ServiceConnection musicConnection = new ServiceConnection(){
 
-            /*
-            if(mediaPlayer.isPlaying()){
-                play.setVisibility(View.GONE);
-                pause.setVisibility(View.VISIBLE);
-            }else{
-                play.setVisibility(View.VISIBLE);
-                pause.setVisibility(View.GONE);
-            }
-            */
-
-
-
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            musicService.MusicBinder binder = (musicService.MusicBinder)service;
+            musicSrv = binder.getService();
+            musicSrv.logTest();
         }
-        catch (Exception e) {
-            Log.e("SimplePlayer", e.getMessage());
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+        }
+    };
+
+
+    //액티비티 시작시 세팅 불러오기.
+    public void initSetting() {
+        //서비스 바인딩
+        if (playIntent == null) {
+            playIntent = new Intent(this, musicService.class);
+            bindService(playIntent, musicConnection, Context.BIND_AUTO_CREATE);
+            startService(playIntent);
         }
     }
 
