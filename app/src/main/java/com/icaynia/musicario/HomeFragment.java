@@ -2,6 +2,8 @@ package com.icaynia.musicario;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,6 +17,7 @@ public class HomeFragment {
     private String TAG = "HomeFragment";
     private LinearLayout contentBox;
     private ViewNowlistening item_nowlistening;
+    private Global global;
 
     public HomeFragment(Context _context, View _v) {
         context = _context;
@@ -22,10 +25,13 @@ public class HomeFragment {
         Log.i(TAG, "HomeFragment is created.");
 
         viewInitialize();
-        addNowlistening();
+        if (global.nowPlaying != null) {
+            addNowlistening();
+        }
     }
 
     public void viewInitialize() {
+        global = (Global) context.getApplicationContext();
         contentBox = (LinearLayout) v.findViewById(R.id.fragment_home);
         item_nowlistening = new ViewNowlistening(context.getApplicationContext());
     }
@@ -38,4 +44,9 @@ public class HomeFragment {
     public void addNowlistening() {
         contentBox.addView(item_nowlistening);
     }
+
+    public void updateNowlistening() {
+        item_nowlistening.initialize();
+    }
+
 }

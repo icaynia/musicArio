@@ -6,6 +6,7 @@ import android.os.IBinder;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -39,6 +40,7 @@ public class TabbedActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     public Global global;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,27 @@ public class TabbedActivity extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.setOffscreenPageLimit(0);
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i2) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                //Force the fragment to reload its data
+                mSectionsPagerAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+                //Not used
+            }
+
+
+        });
+
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
@@ -64,7 +87,6 @@ public class TabbedActivity extends AppCompatActivity {
         global.musicBar = (MusicBar) findViewById(R.id.musicBar);
         global.musicBar.setActivity(TabbedActivity.this);
         global.getMusicList();
-
 
         global.musicBar.updatePlayingInfo();
     }
@@ -142,6 +164,8 @@ public class TabbedActivity extends AppCompatActivity {
                     rootView = inflater.inflate(R.layout.fragment_analytics, container, false);
                     onFragmentAnalytics(rootView);
             }
+            //getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+
 
             return rootView;
         }
@@ -149,6 +173,7 @@ public class TabbedActivity extends AppCompatActivity {
 
         public void onFragmentHome(View v) {
             //home
+            //
             new HomeFragment(getContext(), v);
         }
 
@@ -165,6 +190,12 @@ public class TabbedActivity extends AppCompatActivity {
             //Analytics
         }
 
+        @Override
+        public void onResume() {
+            super.onResume();
+         }
+
+
 
     }
 
@@ -172,7 +203,7 @@ public class TabbedActivity extends AppCompatActivity {
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -204,6 +235,34 @@ public class TabbedActivity extends AppCompatActivity {
                     return "ANALYTICS";
             }
             return null;
+
+        }
+        @Override
+        public int getItemPosition(Object object) {
+
+            return POSITION_NONE;
+        }
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    public class myThread extends Thread {
+        public myThread() {
+
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+
+            }
         }
     }
 

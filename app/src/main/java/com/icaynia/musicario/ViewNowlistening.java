@@ -8,6 +8,7 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -46,9 +47,8 @@ public class ViewNowlistening extends LinearLayout {
     }
 
 
-    private void initialize() {
+    public void initialize() {
         viewInitialize();
-
         if (getNowPlaying() != null) {
             albumImage.setImageBitmap(getAlbumImage(getContext(), Integer.parseInt(getNowPlaying().albumid), 300));
             musicNameView.setText(getNowPlaying().title);
