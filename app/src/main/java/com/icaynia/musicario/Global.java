@@ -20,6 +20,10 @@ import java.util.ArrayList;
  * Created by icaynia on 2016. 11. 12..
  */
 public class Global extends Application {
+    // 전반적인 기능들은 여기서 실행됩니다.
+    // 全般的な機能はここでします。
+    // Most function executes here.
+
     // The following variable must be the public variable.
     // 次の変数は公共変数になければなりません。
     // 다음 변수들은 공용 변수들이 되어야 합니다.
@@ -28,26 +32,26 @@ public class Global extends Application {
     public musicService musicSrv;
     private Intent playIntent;
 
-
-
     /* Important variables */
     public MusicBar musicBar;
-
 
     /* music play */
     public MediaPlayer mediaPlayer = new MediaPlayer();
     public MusicDto nowPlaying = null;
+    public int position;
+
+    /* music list */
+    public ArrayList<MusicDto> nowList;
 
 
     public ArrayList<MusicDto> mediaList;
 
     public void playMusic(int id) {
+        this.position = id;
         this.nowPlaying = this.mediaList.get(id);
         this.musicBar.updatePlayingInfo();
         this.musicBar.setPlay();
         this.musicSrv.playMusic();
-
-
     }
 
     public void getMusicList(){
@@ -97,6 +101,8 @@ public class Global extends Application {
             startService(playIntent);
         }
     }
+
+
 
 
 }

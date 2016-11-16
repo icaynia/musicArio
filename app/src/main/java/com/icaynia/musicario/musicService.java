@@ -55,8 +55,14 @@ public class musicService extends Service {
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
+                // 노래가 끝나면
                 // TODO Auto-generated method stub
-                stopSelf(); // 서비스 종료
+                if (global.position+1 < global.mediaList.size()) {
+                    global.playMusic(global.position+1);
+                } else {
+                    stopSelf();
+                }
+
             }
         });
 

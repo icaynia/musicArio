@@ -6,60 +6,71 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
-import android.support.v7.app.AppCompatActivity;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.AttributedCharacterIterator;
 
 /**
- * Created by icaynia on 2016. 11. 12..
+ * Created by icaynia on 2016. 11. 16..
  */
-public class MusicPlayerActivity extends AppCompatActivity {
-    private LinearLayout titleBox;
-    private LinearLayout albumBox;
-    private LinearLayout controllerView;
-    private ImageView albumImageView;
-    private TextView titleText;
-    private TextView artistText;
-    private Global global;
+public class ViewNowlistening extends LinearLayout {
+    public Global global;
+    public ImageView albumImage;
+    public TextView musicNameView;
+    public TextView artistNameView;
+
+    public ViewNowlistening(Context _context) {
+        super(_context);
+        initialize();
+
+    }
+
+    public ViewNowlistening(Context _context, AttributeSet attrs) {
+        super(_context, attrs);
+        initialize();
+
+    }
+
+    public ViewNowlistening(Context _context, AttributeSet attrs, int defStyle) {
+
+        super(_context, attrs);
+        initialize();
+    }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_musicplayer);
-
+    private void initialize() {
         viewInitialize();
-    }
 
-    public void viewInitialize() {
-        titleBox = (LinearLayout) findViewById(R.id.musicplayer_titleBox);
-        titleText = (TextView) findViewById(R.id.musicplayer_titleText);
-        artistText = (TextView) findViewById(R.id.musicplayer_artistText);
-
-        albumBox = (LinearLayout) findViewById(R.id.musicplayer_albumBox);
-        albumImageView = (ImageView) findViewById(R.id.musicplayer_albumImage);
-
-        controllerView = (LinearLayout) findViewById(R.id.musicplayer_controller);
-
-        global = (Global) getApplication();
-        updateSongInfo();
-    }
-
-    public void updateSongInfo() {
-        if (global.nowPlaying != null) {
-            titleText.setText(global.nowPlaying.title);
-            artistText.setText(global.nowPlaying.artist);
-            Bitmap albumImage = getAlbumImage(this, Integer.parseInt(global.nowPlaying.albumid), 400);
-            albumImageView.setImageBitmap(albumImage);
+        if (getNowPlaying() != null) {
+            albumImage.setImageBitmap(getAlbumImage(getContext(), Integer.parseInt(getNowPlaying().albumid), 300));
+            musicNameView.setText(getNowPlaying().title);
+            artistNameView.setText(getNowPlaying().artist);
         }
     }
-    private static final BitmapFactory.Options options = new BitmapFactory.Options();
+
+    private void viewInitialize() {
+        String infService = Context.LAYOUT_INFLATER_SERVICE;
+        LayoutInflater li = (LayoutInflater) getContext().getSystemService(infService);
+        View v = li.inflate(R.layout.view_main_nowlistening, this, false);
+        addView(v);
+        global = (Global) getContext().getApplicationContext();
+
+        albumImage = (ImageView) findViewById(R.id.view_main_nowlistening_albumImageView);
+        musicNameView = (TextView) findViewById(R.id.view_main_nowlistening_musicNameView);
+        artistNameView = (TextView) findViewById(R.id.view_main_nowlistening_artistNameView);
+    }
+
+    public MusicDto getNowPlaying() {
+        return global.nowPlaying;
+    }
 
     public Bitmap getAlbumImage(Context context, int album_id, int MAX_IMAGE_SIZE) {
         // NOTE: There is in fact a 1 pixel frame in the ImageView used to
@@ -116,4 +127,10 @@ public class MusicPlayerActivity extends AppCompatActivity {
         }
         return null;
     }
+
+
+
+
+    private static final BitmapFactory.Options options = new BitmapFactory.Options();
+
 }
