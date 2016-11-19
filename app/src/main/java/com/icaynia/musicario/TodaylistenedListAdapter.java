@@ -48,10 +48,6 @@ public class TodaylistenedListAdapter extends BaseAdapter {
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             convertView.setLayoutParams(layoutParams);
         }
-
-
         return convertView;
-
-
     }
 }
