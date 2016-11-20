@@ -184,6 +184,7 @@ public class TabbedActivity extends AppCompatActivity {
 
         public void onFragmentNowList(View v) {
             //NowList
+            new NowListFragment(getContext(), v);
         }
 
         public void onFragmentAnalytics(View v) {

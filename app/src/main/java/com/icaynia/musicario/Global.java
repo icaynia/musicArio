@@ -42,8 +42,6 @@ public class Global extends Application {
 
     /* music list */
     public ArrayList<MusicDto> nowList;
-
-
     public ArrayList<MusicDto> mediaList;
 
     public void playMusic(int id) {
