@@ -1,4 +1,4 @@
-package com.icaynia.musicario;
+package com.icaynia.arisong;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -15,13 +15,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
-import java.util.zip.Inflater;
 
 /**
  * Created by icaynia on 2016. 11. 14..

@@ -1,4 +1,4 @@
-package com.icaynia.musicario;
+package com.icaynia.arisong;
 
 import android.content.Context;
 import android.util.Log;
@@ -20,6 +20,11 @@ public class NowListFragment {
     private ListView nowListView;
 
 
+    /* back */
+    private MusicListAdapter musicListAdapter;
+
+
+
     public NowListFragment (Context _context, View _v) {
         this.context = _context;
         this.v = _v;
@@ -30,11 +35,12 @@ public class NowListFragment {
     public void initialize() {
         viewInitialize();
         global = (Global) context.getApplicationContext();
- 
+        musicListAdapter = new MusicListAdapter(((TabbedActivity)context),global.nowList);
+        nowListView.setAdapter(musicListAdapter);
     }
 
     public void viewInitialize() {
-
+        nowListView = (ListView) v.findViewById(R.id.fragment_nowlist_nowlistview);
 
     }
 

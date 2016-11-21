@@ -1,4 +1,4 @@
-package com.icaynia.musicario;
+package com.icaynia.arisong;
 
 import android.app.Service;
 import android.content.Intent;
@@ -8,9 +8,6 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.widget.Toast;
-
-import java.io.File;
 
 /**
  * Created by icaynia on 2016. 11. 15..

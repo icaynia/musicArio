@@ -1,4 +1,4 @@
-package com.icaynia.musicario;
+package com.icaynia.arisong;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,4 @@
-package com.icaynia.musicario;
+package com.icaynia.arisong;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.icaynia.musicario">
+    package="com.icaynia.arisong">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
-        android:name=".Global"
+        android:name="com.icaynia.arisong.Global"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.icaynia.arisong.MainActivity">
 
         </activity>
         <activity
-            android:name=".TabbedActivity"
+            android:name="com.icaynia.arisong.TabbedActivity"
             android:label="@string/title_activity_tabbed"
             android:theme="@style/AppTheme.NoActionBar">
 
@@ -25,16 +25,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MusicPlayerActivity"
+        <activity android:name="com.icaynia.arisong.MusicPlayerActivity"
             android:label="@string/title_activity_tabbed"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
         <service
-            android:name=".musicService"
+            android:name="com.icaynia.arisong.musicService"
             android:enabled="true">
             <intent-filter>
-                <action android:name="com.icaynia.musicario" />
+                <action android:name="com.icaynia.arisong" />
             </intent-filter>
         </service>
     </application>

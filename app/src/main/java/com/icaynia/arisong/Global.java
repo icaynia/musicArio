@@ -1,4 +1,4 @@
-package com.icaynia.musicario;
+package com.icaynia.arisong;
 
 import android.app.Application;
 import android.content.ComponentName;
@@ -6,15 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.IBinder;
 import android.provider.MediaStore;
-import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by icaynia on 2016. 11. 12..
@@ -36,7 +32,6 @@ public class Global extends Application {
     public MusicBar musicBar;
 
     /* music play */
-    public MediaPlayer mediaPlayer = new MediaPlayer();
     public MusicDto nowPlaying = null;
     public int position;
 
@@ -50,6 +45,14 @@ public class Global extends Application {
         this.musicBar.updatePlayingInfo();
         this.musicBar.setPlay();
         this.musicSrv.playMusic();
+    }
+
+    public void playMusicRand() {
+        Random random = new Random();
+        int randInt = random.nextInt(this.mediaList.size());
+
+        this.playMusic(randInt);
+
     }
 
     public void getMusicList(){
@@ -73,6 +76,15 @@ public class Global extends Application {
             mediaList.add(musicDto);
         }
         cursor.close();
+    }
+
+    public void getNowList(String filename) {
+        nowList = new ArrayList<>();
+
+    }
+
+    public void saveNowList(String filename) {
+
     }
 
     private ServiceConnection musicConnection = new ServiceConnection(){

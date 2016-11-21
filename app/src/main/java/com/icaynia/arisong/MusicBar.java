@@ -1,4 +1,4 @@
-package com.icaynia.musicario;
+package com.icaynia.arisong;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -111,7 +111,13 @@ public class MusicBar extends LinearLayout implements View.OnClickListener {
                 break;
             case R.id.musicbar_playbutton:
                 setPlay();
-                global.musicSrv.start();
+                if (global.nowPlaying != null) {
+                    global.musicSrv.start();
+                }
+                else
+                {
+                    global.playMusicRand();
+                }
                 break;
             case R.id.musicbar_backbutton:
                 setPlay();

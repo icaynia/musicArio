@@ -1,4 +1,4 @@
-package com.icaynia.musicario;
+package com.icaynia.arisong;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -1,12 +1,10 @@
-package com.icaynia.musicario;
+package com.icaynia.arisong;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 /**
  * Created by icaynia on 2016. 11. 14..

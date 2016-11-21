@@ -1,14 +1,12 @@
-package com.icaynia.musicario;
+package com.icaynia.arisong;
 
 import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.AttributedCharacterIterator;
 
 /**
  * Created by icaynia on 2016. 11. 16..
