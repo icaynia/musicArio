@@ -1,4 +1,4 @@
-package com.icaynia.arisong;
+package com.icaynia.arimusic;
 
 import android.app.Service;
 import android.content.Intent;

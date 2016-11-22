@@ -1,4 +1,4 @@
-package com.icaynia.arisong;
+package com.icaynia.arimusic;
 
 import android.content.Context;
 import android.util.Log;
@@ -9,18 +9,18 @@ import android.widget.ListView;
 /**
  * Created by icaynia on 2016. 11. 14..
  */
-public class MusicListFragment {
+public class MyMusicFragment {
     private Context context;
     private View v;
-    private String TAG = "MusicListFragment";
+    private String TAG = "MyMusicFragment";
     private ListView listView;
     private Global global;
 
 
-    public MusicListFragment(Context _context, View _v) {
+    public MyMusicFragment(Context _context, View _v) {
         this.context = _context;
         this.v = _v;
-        Log.i(TAG, "MusicListFragment is created.");
+        Log.i(TAG, "MyMusicFragment is created.");
         viewInitialize();
     }
 
@@ -28,7 +28,7 @@ public class MusicListFragment {
         global = ((TabbedActivity)context).global;
         listView = (ListView) v.findViewById(R.id.fragment_musiclist_listView);
 
-        MusicListAdapter adapter = new MusicListAdapter(((TabbedActivity)context), global.mediaList);
+        MyMusicAdapter adapter = new MyMusicAdapter(((TabbedActivity)context), global.mediaList);
         listView.setAdapter(adapter);
 
 

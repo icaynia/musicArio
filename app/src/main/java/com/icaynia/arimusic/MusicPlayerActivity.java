@@ -1,4 +1,4 @@
-package com.icaynia.arisong;
+package com.icaynia.arimusic;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -72,13 +72,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 fd = res.openFileDescriptor(uri, "r");
 
 
-                // Compute the closest power-of-two scale factor
-                // and pass that to sBitmapOptionsCache.inSampleSize, which will
-                // result in faster decoding and better quality
-
-                //크기를 얻어오기 위한옵션 ,
-                //inJustDecodeBounds값이 true로 설정되면 decoder가 bitmap object에 대해 메모리를 할당하지 않고, 따라서 bitmap을 반환하지도 않는다.
-                // 다만 options fields는 값이 채워지기 때문에 Load 하려는 이미지의 크기를 포함한 정보들을 얻어올 수 있다.
                 options.inJustDecodeBounds = true;
                 BitmapFactory.decodeFileDescriptor(
                         fd.getFileDescriptor(), null, options);

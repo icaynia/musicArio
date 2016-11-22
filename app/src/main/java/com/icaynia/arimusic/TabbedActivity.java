@@ -1,4 +1,4 @@
-package com.icaynia.arisong;
+package com.icaynia.arimusic;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -37,7 +37,7 @@ public class TabbedActivity extends AppCompatActivity {
         /* layout */
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("MusicArio");
+        getSupportActionBar().setTitle("AriSong");
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
@@ -146,7 +146,7 @@ public class TabbedActivity extends AppCompatActivity {
                     onFragmentMusicList(rootView);
                     break;
                 case 3:
-                    rootView = inflater.inflate(R.layout.fragment_nowlist, container, false);
+                    rootView = inflater.inflate(R.layout.fragment_musiclist, container, false);
                     onFragmentNowList(rootView);
                     break;
                 case 4:
@@ -168,7 +168,7 @@ public class TabbedActivity extends AppCompatActivity {
 
         public void onFragmentMusicList(View v) {
             //MusicList
-            new MusicListFragment(getContext(), v);
+            new MyMusicFragment(getContext(), v);
         }
 
         public void onFragmentNowList(View v) {
@@ -220,7 +220,7 @@ public class TabbedActivity extends AppCompatActivity {
                 case 1:
                     return "MY MUSIC";
                 case 2:
-                    return "NOWLIST";
+                    return "PLAYLIST";
                 case 3:
                     return "ANALYTICS";
             }

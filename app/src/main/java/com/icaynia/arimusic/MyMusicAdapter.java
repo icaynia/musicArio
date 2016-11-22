@@ -1,4 +1,4 @@
-package com.icaynia.arisong;
+package com.icaynia.arimusic;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -24,17 +24,17 @@ import java.util.List;
 /**
  * Created by icaynia on 2016. 11. 14..
  */
-public class MusicListAdapter extends BaseAdapter {
+public class MyMusicAdapter extends BaseAdapter {
     List<MusicDto> list;
     Activity activity;
     LayoutInflater inflater;
     public ImageView album;
 
-    public MusicListAdapter() {
+    public MyMusicAdapter() {
 
     }
 
-    public MusicListAdapter(Activity activity, List<MusicDto> list) {
+    public MyMusicAdapter(Activity activity, List<MusicDto> list) {
         this.list = list;
         this.activity = activity;
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

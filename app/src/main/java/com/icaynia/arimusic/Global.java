@@ -1,4 +1,4 @@
-package com.icaynia.arisong;
+package com.icaynia.arimusic;
 
 import android.app.Application;
 import android.content.ComponentName;
@@ -36,7 +36,7 @@ public class Global extends Application {
     public int position;
 
     /* music list */
-    public ArrayList<MusicDto> nowList;
+    public PlayList nowList = new PlayList(this);
     public ArrayList<MusicDto> mediaList;
 
     public void playMusic(int id) {
@@ -45,6 +45,8 @@ public class Global extends Application {
         this.musicBar.updatePlayingInfo();
         this.musicBar.setPlay();
         this.musicSrv.playMusic();
+
+        this.nowList.save("fls.plt");
     }
 
     public void playMusicRand() {
@@ -56,6 +58,7 @@ public class Global extends Application {
     }
 
     public void getMusicList(){
+
         mediaList = new ArrayList<>();
         //가져오고 싶은 컬럼 명을 나열합니다. 음악의 아이디, 앰블럼 아이디, 제목, 아스티스트 정보를 가져옵니다.
         String[] projection = {MediaStore.Audio.Media._ID,
@@ -77,16 +80,6 @@ public class Global extends Application {
         }
         cursor.close();
     }
-
-    public void getNowList(String filename) {
-        nowList = new ArrayList<>();
-
-    }
-
-    public void saveNowList(String filename) {
-
-    }
-
     private ServiceConnection musicConnection = new ServiceConnection(){
 
         @Override
