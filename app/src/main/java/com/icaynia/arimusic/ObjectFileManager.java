@@ -73,9 +73,9 @@ public class ObjectFileManager {
             Log.e("ofm", list[i].getName()+"" );
             PlayList pl = new PlayList(context);
             pl.listName = list[i].getName().toString();
+            //pl.listName = pl.listName.replace(".plt", "");
             pl.load(list[i].getName());
             al.add(pl);
-
         }
 
         return al;

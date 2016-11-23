@@ -3,6 +3,7 @@ package com.icaynia.arimusic;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -86,9 +87,13 @@ public class TabbedActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_tabbed, menu);
-        return true;
+
+        SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
+
+        return super.onCreateOptionsMenu(menu);
     }
 
+    /*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -103,7 +108,7 @@ public class TabbedActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+    */
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -146,7 +151,7 @@ public class TabbedActivity extends AppCompatActivity {
                     onFragmentMusicList(rootView);
                     break;
                 case 3:
-                    rootView = inflater.inflate(R.layout.fragment_musiclist, container, false);
+                    rootView = inflater.inflate(R.layout.fragment_playlist, container, false);
                     onFragmentNowList(rootView);
                     break;
                 case 4:
