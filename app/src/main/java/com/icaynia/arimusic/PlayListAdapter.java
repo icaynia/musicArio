@@ -56,7 +56,7 @@ public class PlayListAdapter extends BaseAdapter {
         }
 
         TextView textView = (TextView) convertView.findViewById(R.id.view_playlist_row_titleView);
-        textView.setText(list.get(position).listName.toString());
+        textView.setText(list.get(position).getName());
 
         return convertView;
     }

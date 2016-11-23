@@ -24,13 +24,13 @@ public class ObjectFileManager {
         rootSD = Environment.getExternalStorageDirectory().toString();
     }
 
-    public ArrayList<MusicDto> load(String filename) {
+    public PlayList load(String filename) {
         try
         {
             FileInputStream fis = new FileInputStream (new File(rootSD + "/arimusic/" + filename));
             ObjectInputStream ois = new ObjectInputStream(fis);
 
-            ArrayList<MusicDto> data = (ArrayList<MusicDto>)ois.readObject();
+            PlayList data = (PlayList)ois.readObject();
 
             ois.close();
             fis.close();
@@ -44,7 +44,7 @@ public class ObjectFileManager {
         return null;
     }
 
-    public void save(ArrayList<MusicDto> data, String filename) {
+    public void save(PlayList data, String filename) {
 
         ObjectOutputStream oos = null;
         FileOutputStream fos = null;
@@ -61,8 +61,9 @@ public class ObjectFileManager {
         }
     }
 
-    public ArrayList<PlayList> getFileList() {
-        ArrayList<PlayList> al = new ArrayList<>();
+    /* function that execute when there is no argument */
+    public ArrayList<PlayList> getPlayList() {
+        ArrayList<PlayList> al = new ArrayList<PlayList>();
         File file = new File( rootSD + "/arimusic" ) ;
         if( !file.exists() ) {
             file.mkdirs();
@@ -71,11 +72,7 @@ public class ObjectFileManager {
         for( int i=0; i<list.length; i++)
         {
             Log.e("ofm", list[i].getName()+"" );
-            PlayList pl = new PlayList(context);
-            pl.listName = list[i].getName().toString();
-            //pl.listName = pl.listName.replace(".plt", "");
-            pl.load(list[i].getName());
-            al.add(pl);
+            al.add(this.load(list[i].getName()+""));
         }
 
         return al;

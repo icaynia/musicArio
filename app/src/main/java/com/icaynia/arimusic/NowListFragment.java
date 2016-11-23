@@ -26,11 +26,8 @@ public class NowListFragment {
     private TextView noListTv;
 
     /* back */
-    private PlayListAdapter musicListAdapter;
-
-    private ObjectFileManager ofm;
-
-
+    private PlayListAdapter pla;
+    private PlayListManager plm;
 
     public NowListFragment (Context _context, View _v) {
         this.context = _context;
@@ -39,34 +36,26 @@ public class NowListFragment {
         initialize();
     }
 
-    public void initialize() {
-        viewInitialize();
-        global = (Global) context.getApplicationContext();
-        ofm = new ObjectFileManager(context);
-
-        ArrayList<PlayList> pl = ofm.getFileList();
-        if (pl.size() != 0) {
-            musicListAdapter = new PlayListAdapter(((TabbedActivity) context), pl);
-            nowListView.setAdapter(musicListAdapter);
-        } else {
-        }
-
-        nowListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(((TabbedActivity)context), PlayListActivity.class);
-                intent.putExtra("listid", id);
-
-                context.startActivity(intent);
-            }
-        });
-        //nowListView.setAdapter(musicListAdapter);
-    }
-
     public void viewInitialize() {
         nowListView = (ListView) v.findViewById(R.id.fragment_playlist_listView);
         noListTv = (TextView) v.findViewById(R.id.fragment_playlist_nolist);
+    }
+
+    public void initialize() {
+        viewInitialize();
+        global = (Global) context.getApplicationContext();
+        plm = new PlayListManager(context);
+
+        /* listview initialize */
+        pla = new PlayListAdapter((TabbedActivity)context, getPlayListAll());
+        nowListView.setAdapter(pla);
+
 
     }
+
+    public ArrayList<PlayList> getPlayListAll() {
+        return plm.getPlayListAll();
+    }
+
 
 }
