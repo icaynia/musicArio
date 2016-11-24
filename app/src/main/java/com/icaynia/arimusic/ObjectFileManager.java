@@ -16,8 +16,8 @@ import java.util.List;
  * Created by icaynia on 2016. 11. 21..
  */
 public class ObjectFileManager {
-    String rootSD;
-    Context context;
+    private Context context;
+    private String rootSD;
 
     public ObjectFileManager(Context _context) {
         this.context = _context;

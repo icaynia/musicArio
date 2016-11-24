@@ -22,10 +22,11 @@ public class PlayListActivity extends AppCompatActivity{
         Log.e("playlist", id+"");
     }
 
-    /*
     public PlayList getPlayList(String filename) {
-
+        PlayList playList = new PlayList();
+        PlayListManager plm = new PlayListManager(this);
+        playList = getPlayList(filename);
         return playList;
     }
-    */
+
 }

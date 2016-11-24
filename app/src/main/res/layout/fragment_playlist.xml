@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/fragment_playlist_nolist"
+        android:id="@+id/fragment_playlist_newlist"
         android:text="New Playlist"
         android:textSize="16dp"
         android:textColor="#334"

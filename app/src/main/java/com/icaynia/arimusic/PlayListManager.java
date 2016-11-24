@@ -32,7 +32,9 @@ public class PlayListManager {
         return ofm.getPlayList();
     }
 
-
+    public void savePlayList(PlayList data, String filename) {
+        ofm.save(data, filename);
+    }
 
 
 
