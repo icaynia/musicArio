@@ -49,6 +49,7 @@ public class PlayListFragment implements View.OnClickListener{
     public void viewInitialize() {
         nowListView = (ListView) v.findViewById(R.id.fragment_playlist_listView);
         newListTv = (TextView) v.findViewById(R.id.fragment_playlist_newlist);
+        newListTv.setOnClickListener(this);
     }
 
     public void initialize() {
@@ -112,7 +113,12 @@ public class PlayListFragment implements View.OnClickListener{
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String name = nameV.getText().toString();
-                plm.savePlayList(new PlayList(), name+".plt");
+
+                PlayList pl = new PlayList();
+                pl.setFilename(name + ".plt");
+                pl.setName(name);
+
+                plm.savePlayList(pl);
                 Toast.makeText(context, "Added", Toast.LENGTH_SHORT);
 
                 dialog.dismiss();

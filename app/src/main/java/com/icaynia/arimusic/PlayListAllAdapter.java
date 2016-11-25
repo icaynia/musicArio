@@ -59,7 +59,7 @@ public class PlayListAllAdapter extends BaseAdapter {
 
         /* for tag */
         LinearLayout box = (LinearLayout) convertView.findViewById(R.id.view_playlistall_row_box);
-        box.setTag(1, list.get(position).getFilename());
+        //box.setTag(list.get(position).getFilename());
 
         return convertView;
     }

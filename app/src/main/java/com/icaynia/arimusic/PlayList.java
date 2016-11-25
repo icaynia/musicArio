@@ -1,15 +1,16 @@
 package com.icaynia.arimusic;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by icaynia on 2016. 11. 21..
  */
-public class PlayList {
+public class PlayList implements Serializable {
     private int index;
     private String filename;
-    private String name;
+    private String name = "";
     private String listExplanation;
     private ArrayList<MusicDto> list = new ArrayList<MusicDto>();
 

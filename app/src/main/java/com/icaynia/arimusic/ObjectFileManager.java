@@ -27,10 +27,12 @@ public class ObjectFileManager {
     public PlayList load(String filename) {
         try
         {
+            Log.e("ofm", "load : " + rootSD + "/arimusic/" + filename);
             FileInputStream fis = new FileInputStream (new File(rootSD + "/arimusic/" + filename));
             ObjectInputStream ois = new ObjectInputStream(fis);
 
             PlayList data = (PlayList)ois.readObject();
+            Log.e("ofm", "load complete");
 
             ois.close();
             fis.close();
