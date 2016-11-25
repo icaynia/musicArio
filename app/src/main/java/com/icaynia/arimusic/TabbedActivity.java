@@ -13,7 +13,6 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -178,7 +177,7 @@ public class TabbedActivity extends AppCompatActivity {
 
         public void onFragmentNowList(View v) {
             //NowList
-            new NowListFragment(getContext(), v);
+            new PlayListFragment(getContext(), v);
         }
 
         public void onFragmentAnalytics(View v) {

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 /**
  * Created by icaynia on 2016. 11. 20..
  */
-public class NowListFragment implements View.OnClickListener{
+public class PlayListFragment implements View.OnClickListener{
 
     public Context context;
     public View v;
@@ -34,7 +34,7 @@ public class NowListFragment implements View.OnClickListener{
     private PlayListAllAdapter pla;
     private PlayListManager plm;
 
-    public NowListFragment (Context _context, View _v) {
+    public PlayListFragment(Context _context, View _v) {
         this.context = _context;
         this.v = _v;
         Log.e(TAG, TAG + " is created");
