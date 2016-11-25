@@ -11,7 +11,7 @@ public class PlayList {
     private String filename;
     private String name;
     private String listExplanation;
-    private ArrayList<MusicDto> list;
+    private ArrayList<MusicDto> list = new ArrayList<MusicDto>();
 
     public PlayList() {
 
@@ -45,6 +45,24 @@ public class PlayList {
         return this.list.size();
     }
 
+    public void setIndex(int index) {
+        this.index = index;
+    }
 
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setList(ArrayList<MusicDto> list) {
+        this.list = list;
+    }
+
+    public void setListExplanation(String listExplanation) {
+        this.listExplanation = listExplanation;
+    }
 
 }

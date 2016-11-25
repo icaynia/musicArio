@@ -9,29 +9,31 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by icaynia on 2016. 11. 22..
  */
-public class PlayListAdapter extends BaseAdapter {
-    PlayList list;
+public class PlayListAllAdapter extends BaseAdapter {
+    ArrayList<PlayList> list;
     Activity activity;
     LayoutInflater inflater;
 
     /* View */
 
-    public PlayListAdapter() {
+    public PlayListAllAdapter() {
 
     }
 
-    public PlayListAdapter(Activity activity, PlayList list) {
-        this.list = list;
+    public PlayListAllAdapter(Activity activity, ArrayList<PlayList> _list) {
+        this.list = _list;
         this.activity = activity;
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
-        return this.list.getSize();
+        return this.list.size();
     }
 
     @Override
@@ -52,8 +54,12 @@ public class PlayListAdapter extends BaseAdapter {
             convertView.setLayoutParams(layoutParams);
         }
 
-        TextView textView = (TextView) convertView.findViewById(R.id.view_playlist_row_titleView);
-        textView.setText(list.getName());
+        TextView textView = (TextView) convertView.findViewById(R.id.view_playlistall_row_titleView);
+        textView.setText(list.get(position).getName());
+
+        /* for tag */
+        LinearLayout box = (LinearLayout) convertView.findViewById(R.id.view_playlistall_row_box);
+        box.setTag(1, list.get(position).getFilename());
 
         return convertView;
     }

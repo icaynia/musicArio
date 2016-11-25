@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 /**
  * Created by icaynia on 2016. 11. 20..
@@ -32,7 +31,7 @@ public class NowListFragment implements View.OnClickListener{
     private TextView newListTv;
 
     /* back */
-    private PlayListAdapter pla;
+    private PlayListAllAdapter pla;
     private PlayListManager plm;
 
     public NowListFragment (Context _context, View _v) {
@@ -53,8 +52,18 @@ public class NowListFragment implements View.OnClickListener{
         plm = new PlayListManager(context);
 
         /* listview initialize */
-        pla = new PlayListAdapter((TabbedActivity)context, getPlayListAll());
+        pla = new PlayListAllAdapter((TabbedActivity)context, getPlayListAll());
         nowListView.setAdapter(pla);
+
+        nowListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String filename = view.getTag(1).toString();
+                Intent intent = new Intent(context, PlayListActivity.class);
+                intent.putExtra("filename", filename);
+                context.startActivity(intent);
+            }
+        });
     }
 
     public ArrayList<PlayList> getPlayListAll() {

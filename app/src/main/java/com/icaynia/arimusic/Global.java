@@ -36,7 +36,7 @@ public class Global extends Application {
     public int position;
 
     /* music list */
-    public PlayList nowList = new PlayList(this);
+    public PlayList nowList = new PlayList();
     public ArrayList<MusicDto> mediaList;
 
     public void playMusic(int id) {
@@ -45,8 +45,6 @@ public class Global extends Application {
         this.musicBar.updatePlayingInfo();
         this.musicBar.setPlay();
         this.musicSrv.playMusic();
-
-        this.nowList.save("fls.plt");
     }
 
     public void playMusicRand() {
