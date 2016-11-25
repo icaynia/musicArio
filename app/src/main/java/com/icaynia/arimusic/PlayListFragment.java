@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by icaynia on 2016. 11. 20..
@@ -33,6 +34,10 @@ public class PlayListFragment implements View.OnClickListener{
     /* back */
     private PlayListAllAdapter pla;
     private PlayListManager plm;
+
+    /* temp val */
+
+
 
     public PlayListFragment(Context _context, View _v) {
         this.context = _context;
@@ -62,6 +67,20 @@ public class PlayListFragment implements View.OnClickListener{
                 Intent intent = new Intent(context, PlayListActivity.class);
                 intent.putExtra("filename", filename);
                 context.startActivity(intent);
+            }
+        });
+
+        nowListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                // menu
+                List<String> liste = new ArrayList<String>();
+                liste.add("열기");
+                liste.add("편집");
+                liste.add("삭제");
+                //liste.add("공유");
+                onLongClick(liste);
+                return false;
             }
         });
     }
@@ -108,6 +127,35 @@ public class PlayListFragment implements View.OnClickListener{
         });
         final AlertDialog alert = builder.create();
         alert.show();
+    }
 
+    public void onLongClick(final List<String> listItems) {
+        final CharSequence[] items = listItems.toArray(new CharSequence[listItems.size()]);
+        listItems.toArray(new CharSequence[listItems.size()]);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                listItems.get(item).toString();
+
+                switch (item) {
+                    case 0:
+
+                        break;
+                    case 1:
+
+                        break;
+                    case 2:
+
+                        break;
+                }
+            }
+
+        });
+
+        //buider.setCancelable(false);  // 뒤로 가기 버튼 사용 금지.
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
