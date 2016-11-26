@@ -64,7 +64,9 @@ public class PlayListFragment implements View.OnClickListener{
         nowListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String filename = view.getTag(1).toString();
+                TextView listnm = (TextView) view.findViewById(R.id.view_playlistall_row_titleView);
+                String filename = listnm.getTag().toString();
+
                 Intent intent = new Intent(context, PlayListActivity.class);
                 intent.putExtra("filename", filename);
                 context.startActivity(intent);

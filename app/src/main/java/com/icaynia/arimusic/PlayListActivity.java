@@ -22,7 +22,7 @@ public class PlayListActivity extends AppCompatActivity{
         setContentView(R.layout.activity_playlist);
 
         Log.e(TAG, TAG + " is created");
-        initialize();
+        //initialize();
     }
 
     public void initialize() {

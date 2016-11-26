@@ -25,9 +25,6 @@ public class musicService extends Service {
     Runnable task = new Runnable() {
         public void run(){
             try {
-                //seekBar.setProgress(0);
-                //title.setText(musicDto.getArtist()+" - "+musicDto.getTitle());
-
                 Uri musicURI = Uri.withAppendedPath(
                         MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, global.nowPlaying.id);
                 mediaPlayer.reset();
