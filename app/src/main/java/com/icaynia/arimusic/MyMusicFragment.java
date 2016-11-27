@@ -1,10 +1,16 @@
 package com.icaynia.arimusic;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by icaynia on 2016. 11. 14..
@@ -32,6 +38,7 @@ public class MyMusicFragment {
         listView.setAdapter(adapter);
 
 
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -39,7 +46,52 @@ public class MyMusicFragment {
             }
         });
 
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView title = (TextView) view.findViewById(R.id.view_musiclist_row_title);
+                int ids = Integer.parseInt(title.getTag().toString());
 
+                // menu
+                List<String> liste = new ArrayList<String>();
+                liste.add("재생목록에 추가");
+                liste.add("다음 재생에 추가");
+                onLongClick(liste, ids);
+                return false;
+            }
+        });
+    }
+
+    public void onLongClick(final List<String> listItems, int id) {
+        final CharSequence[] items = listItems.toArray(new CharSequence[listItems.size()]);
+        listItems.toArray(new CharSequence[listItems.size()]);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                listItems.get(item).toString();
+
+                switch (item) {
+                    case 0:
+                        Log.e("frg", "add to playlist");
+                        PlayListPickerDialog plpd = new PlayListPickerDialog(context);
+                        plpd.show();
+                        break;
+                    case 1:
+
+                        break;
+                    case 2:
+                        Log.e("frg", "delete");
+                        break;
+                }
+            }
+
+        });
+
+        //buider.setCancelable(false);  // 뒤로 가기 버튼 사용 금지.
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
 

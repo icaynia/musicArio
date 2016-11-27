@@ -1,6 +1,7 @@
 package com.icaynia.arimusic;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -33,9 +34,20 @@ public class PlayListManager {
     }
 
     public void savePlayList(PlayList data) {
-        ofm.save(data, data.getFilename());
+        if (!ofm.isAvailable(data.getFilename())) {
+            ofm.save(data, data.getFilename());
+        } else {
+            Toast.makeText(context, "This name already used", Toast.LENGTH_SHORT).show();
+        }
     }
 
+    public void deletePlayList(PlayList data) {
+        ofm.delete(data.getFilename());
+    }
+
+    public void deletePlayList(String filename) {
+        ofm.delete(filename);
+    }
 
 
 }

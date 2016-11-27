@@ -76,13 +76,16 @@ public class PlayListFragment implements View.OnClickListener{
         nowListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView listnm = (TextView) view.findViewById(R.id.view_playlistall_row_titleView);
+                String filename = listnm.getTag().toString();
+
                 // menu
                 List<String> liste = new ArrayList<String>();
                 liste.add("열기");
                 liste.add("편집");
                 liste.add("삭제");
                 //liste.add("공유");
-                onLongClick(liste);
+                onLongClick(liste, filename);
                 return false;
             }
         });
@@ -123,6 +126,8 @@ public class PlayListFragment implements View.OnClickListener{
                 plm.savePlayList(pl);
                 Toast.makeText(context, "Added", Toast.LENGTH_SHORT);
 
+                updateListView();
+
                 dialog.dismiss();
             }
         });
@@ -137,7 +142,7 @@ public class PlayListFragment implements View.OnClickListener{
         alert.show();
     }
 
-    public void onLongClick(final List<String> listItems) {
+    public void onLongClick(final List<String> listItems, final String filename) {
         final CharSequence[] items = listItems.toArray(new CharSequence[listItems.size()]);
         listItems.toArray(new CharSequence[listItems.size()]);
 
@@ -149,13 +154,17 @@ public class PlayListFragment implements View.OnClickListener{
 
                 switch (item) {
                     case 0:
-
+                        PlayListPickerDialog plpd = new PlayListPickerDialog(context);
+                        
                         break;
                     case 1:
 
                         break;
                     case 2:
+                        Log.e("frg", "delete");
+                        plm.deletePlayList(filename);
 
+                        updateListView();
                         break;
                 }
             }
@@ -166,4 +175,12 @@ public class PlayListFragment implements View.OnClickListener{
         AlertDialog alert = builder.create();
         alert.show();
     }
+
+    public void updateListView() {
+
+        pla = new PlayListAllAdapter((TabbedActivity)context, getPlayListAll());
+        nowListView.setAdapter(pla);
+    }
+
+
 }

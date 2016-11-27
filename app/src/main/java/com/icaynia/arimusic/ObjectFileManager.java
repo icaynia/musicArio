@@ -3,6 +3,7 @@ package com.icaynia.arimusic;
 import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -47,19 +48,19 @@ public class ObjectFileManager {
     }
 
     public void save(PlayList data, String filename) {
+        if (!isAvailable(filename)) {
+            ObjectOutputStream oos = null;
+            FileOutputStream fos = null;
 
-        ObjectOutputStream oos = null;
-        FileOutputStream fos = null;
-
-        String r = rootSD +"/arimusic/"+filename;
-        try
-        {
-            oos = new ObjectOutputStream(new FileOutputStream(rootSD +"/arimusic/"+filename));
-            oos.writeObject(data);
-            oos.close();
-            Log.e("Ww", "save completed  : "+r);
-        } catch (Exception e ) {
-            e.printStackTrace();
+            String r = rootSD + "/arimusic/" + filename;
+            try {
+                oos = new ObjectOutputStream(new FileOutputStream(rootSD + "/arimusic/" + filename));
+                oos.writeObject(data);
+                oos.close();
+                Log.e("Ww", "save completed  : " + r);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -80,4 +81,16 @@ public class ObjectFileManager {
         return al;
     }
 
+    public void delete(String filename) {
+        File file = new File(rootSD + "/arimusic/" + filename);
+        file.delete();
+    }
+
+    public boolean isAvailable(String filename) {
+        File file = new File(rootSD + "/arimusic/" + filename);
+        if (file.isFile()) {
+            return true;
+        }
+        return false;
+    }
 }

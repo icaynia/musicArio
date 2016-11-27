@@ -71,6 +71,8 @@ public class MyMusicAdapter extends BaseAdapter {
         title.setText(list.get(position).title);
         artist.setText(list.get(position).artist);
 
+        title.setTag(list.get(position).id + "");
+
         MyAsyncTask myAsyncTask = new MyAsyncTask();
         myAsyncTask.setImgView(album);
         myAsyncTask.execute(position+"");
