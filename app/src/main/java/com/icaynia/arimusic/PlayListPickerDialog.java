@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,7 +22,7 @@ public class PlayListPickerDialog {
     public PlayListPickerDialog(Context context) {
         this.context = context;
     }
-
+    AlertDialog alert;
     public void show() {
         plm = new PlayListManager(context);
 
@@ -32,19 +33,21 @@ public class PlayListPickerDialog {
 
         ListView playListVu = (ListView) dialogV.findViewById(R.id.dialog_playlistpicker);
         playListVu.setAdapter(new PlayListPickerListAdapter(context, playLists));
+        playListVu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                mListener.onPlayListPickEvent(playLists.get(position));
+                alert.hide();
+            }
+        });
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-
-        final EditText nameV = (EditText) dialogV.findViewById(R.id.dialog_newplaylist_name);
-
         builder.setView(dialogV);
-        builder.setTitle("Add PlayList");
+        builder.setTitle("Select PlayList");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String name = nameV.getText().toString();
-
                 mListener.onPlayListPickEvent(playLists.get(which));
                 Toast.makeText(context, "Added", Toast.LENGTH_SHORT);
 
@@ -58,13 +61,13 @@ public class PlayListPickerDialog {
                 dialog.dismiss();
             }
         });
-        final AlertDialog alert = builder.create();
+        alert = builder.create();
         alert.show();
 
 
     }
 
-    public void setMyEventListener(PlayListPickEventListener listener) {
+    public void setPlayListPickEventListener(PlayListPickEventListener listener) {
         mListener = listener;
     }
 }

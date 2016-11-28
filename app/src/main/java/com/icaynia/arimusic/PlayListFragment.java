@@ -58,8 +58,7 @@ public class PlayListFragment implements View.OnClickListener{
         plm = new PlayListManager(context);
 
         /* listview initialize */
-        pla = new PlayListAllAdapter((TabbedActivity)context, getPlayListAll());
-        nowListView.setAdapter(pla);
+        updateListView();
 
         nowListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

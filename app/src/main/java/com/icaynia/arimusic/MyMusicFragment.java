@@ -75,8 +75,15 @@ public class MyMusicFragment {
                 switch (item) {
                     case 0:
                         Log.e("frg", "add to playlist");
-                        PlayListPickerDialog plpd = new PlayListPickerDialog(context);
+                        final PlayListPickerDialog plpd = new PlayListPickerDialog(context);
+                        plpd.setPlayListPickEventListener(new PlayListPickEventListener() {
+                            @Override
+                            public void onPlayListPickEvent(PlayList playList) {
+                                Log.e("rr", "click : "+playList.getName() );
+                            }
+                        });
                         plpd.show();
+
                         break;
                     case 1:
 
