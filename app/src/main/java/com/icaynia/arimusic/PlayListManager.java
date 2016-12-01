@@ -34,11 +34,7 @@ public class PlayListManager {
     }
 
     public void savePlayList(PlayList data) {
-        if (!ofm.isAvailable(data.getFilename())) {
-            ofm.save(data, data.getFilename());
-        } else {
-            Toast.makeText(context, "This name already used", Toast.LENGTH_SHORT).show();
-        }
+        ofm.save(data, data.getFilename());
     }
 
     public void deletePlayList(PlayList data) {

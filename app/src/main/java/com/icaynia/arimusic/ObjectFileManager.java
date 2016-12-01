@@ -48,20 +48,19 @@ public class ObjectFileManager {
     }
 
     public void save(PlayList data, String filename) {
-        if (!isAvailable(filename)) {
-            ObjectOutputStream oos = null;
-            FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        FileOutputStream fos = null;
 
-            String r = rootSD + "/arimusic/" + filename;
-            try {
-                oos = new ObjectOutputStream(new FileOutputStream(rootSD + "/arimusic/" + filename));
-                oos.writeObject(data);
-                oos.close();
-                Log.e("Ww", "save completed  : " + r);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        String r = rootSD + "/arimusic/" + filename;
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream(rootSD + "/arimusic/" + filename));
+            oos.writeObject(data);
+            oos.close();
+            Log.e("Ww", "save completed  : " + r);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 
     /* function that execute when there is no argument */

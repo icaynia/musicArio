@@ -56,13 +56,13 @@ public class MyMusicFragment {
                 List<String> liste = new ArrayList<String>();
                 liste.add("재생목록에 추가");
                 liste.add("다음 재생에 추가");
-                onLongClick(liste, ids);
+                onLongClick(liste, global.mediaList.get(position));
                 return false;
             }
         });
     }
 
-    public void onLongClick(final List<String> listItems, int id) {
+    public void onLongClick(final List<String> listItems, final MusicDto music) {
         final CharSequence[] items = listItems.toArray(new CharSequence[listItems.size()]);
         listItems.toArray(new CharSequence[listItems.size()]);
 
@@ -80,6 +80,10 @@ public class MyMusicFragment {
                             @Override
                             public void onPlayListPickEvent(PlayList playList) {
                                 Log.e("rr", "click : "+playList.getName() );
+                                PlayListManager plm = new PlayListManager(context);
+                                playList.add(music);
+                                plm.savePlayList(playList);
+
                             }
                         });
                         plpd.show();
@@ -87,9 +91,6 @@ public class MyMusicFragment {
                         break;
                     case 1:
 
-                        break;
-                    case 2:
-                        Log.e("frg", "delete");
                         break;
                 }
             }
@@ -100,10 +101,6 @@ public class MyMusicFragment {
         AlertDialog alert = builder.create();
         alert.show();
     }
-
-
-
-
 
 
 }

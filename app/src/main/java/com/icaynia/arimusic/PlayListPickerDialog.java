@@ -63,8 +63,6 @@ public class PlayListPickerDialog {
         });
         alert = builder.create();
         alert.show();
-
-
     }
 
     public void setPlayListPickEventListener(PlayListPickEventListener listener) {

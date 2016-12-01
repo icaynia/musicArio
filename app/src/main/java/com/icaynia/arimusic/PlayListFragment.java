@@ -169,14 +169,11 @@ public class PlayListFragment implements View.OnClickListener{
             }
 
         });
-
-        //buider.setCancelable(false);  // 뒤로 가기 버튼 사용 금지.
         AlertDialog alert = builder.create();
         alert.show();
     }
 
     public void updateListView() {
-
         pla = new PlayListAllAdapter((TabbedActivity)context, getPlayListAll());
         nowListView.setAdapter(pla);
     }

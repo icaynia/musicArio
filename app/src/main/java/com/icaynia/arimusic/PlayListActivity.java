@@ -16,13 +16,14 @@ public class PlayListActivity extends AppCompatActivity{
     private ListView listView;
 
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playlist);
 
         Log.e(TAG, TAG + " is created");
-        //initialize();
+        initialize();
     }
 
     public void initialize() {
@@ -31,10 +32,11 @@ public class PlayListActivity extends AppCompatActivity{
         Intent intent = getIntent();
         String filename = intent.getStringExtra("filename");
 
+        Log.e("PlayListActivity", filename);
+
         PlayList playList = getPlayList(filename);
         PlayListAdapter pla = new PlayListAdapter(this, playList);
         listView.setAdapter(pla);
-
 
     }
 
@@ -43,9 +45,8 @@ public class PlayListActivity extends AppCompatActivity{
     }
 
     public PlayList getPlayList(String filename) {
-        PlayList playList = new PlayList();
         PlayListManager plm = new PlayListManager(this);
-        playList = getPlayList(filename);
+        PlayList playList = plm.getPlayList(filename);
         return playList;
     }
 
