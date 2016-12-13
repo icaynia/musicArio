@@ -37,7 +37,7 @@
 
         </activity>
         <service
-            android:name="com.icaynia.arimusic.musicService"
+            android:name="com.icaynia.arimusic.Service.musicService"
             android:enabled="true">
             <intent-filter>
                 <action android:name="com.icaynia.arisong" />

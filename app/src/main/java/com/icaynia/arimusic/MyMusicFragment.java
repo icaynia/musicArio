@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.icaynia.arimusic.Model.MusicDto;
+
 import java.util.ArrayList;
 import java.util.List;
 

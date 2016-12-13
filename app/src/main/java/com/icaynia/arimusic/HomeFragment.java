@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.icaynia.arimusic.View.NowListeningView;
+
 /**
  * Created by icaynia on 2016. 11. 12..
  */
@@ -14,7 +16,7 @@ public class HomeFragment {
     public View v;
     private String TAG = "HomeFragment";
     private LinearLayout contentBox;
-    private ViewNowlistening item_nowlistening;
+    private NowListeningView item_nowlistening;
     private Global global;
 
     public HomeFragment(Context _context, View _v) {
@@ -31,7 +33,7 @@ public class HomeFragment {
     public void viewInitialize() {
         global = (Global) context.getApplicationContext();
         contentBox = (LinearLayout) v.findViewById(R.id.fragment_home);
-        item_nowlistening = new ViewNowlistening(context.getApplicationContext());
+        item_nowlistening = new NowListeningView(context.getApplicationContext());
     }
 
     public void onMusicPlayerActivity() {

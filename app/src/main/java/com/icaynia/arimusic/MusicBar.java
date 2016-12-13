@@ -91,6 +91,7 @@ public class MusicBar extends LinearLayout implements View.OnClickListener {
             Bitmap bitmap = getAlbumImage(activity, Integer.parseInt(global.nowPlaying.albumid), 170);
             if (bitmap != null)
                 albumView.setImageBitmap(bitmap);
+            else albumView.setImageBitmap(null);
             if (global.musicSrv.isPlaying()) {
                 setPlay();
             } else {

@@ -1,4 +1,4 @@
-package com.icaynia.arimusic;
+package com.icaynia.arimusic.Service;
 
 import android.app.Service;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.provider.MediaStore;
 import android.util.Log;
+
+import com.icaynia.arimusic.Global;
 
 /**
  * Created by icaynia on 2016. 11. 15..

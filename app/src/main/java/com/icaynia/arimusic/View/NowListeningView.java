@@ -1,4 +1,4 @@
-package com.icaynia.arimusic;
+package com.icaynia.arimusic.View;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -13,32 +13,33 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.icaynia.arimusic.Global;
+import com.icaynia.arimusic.Model.MusicDto;
+import com.icaynia.arimusic.R;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
  * Created by icaynia on 2016. 11. 16..
  */
-public class ViewNowlistening extends LinearLayout {
+public class NowListeningView extends LinearLayout {
     public Global global;
     public ImageView albumImage;
     public TextView musicNameView;
     public TextView artistNameView;
 
-    public ViewNowlistening(Context _context) {
+    public NowListeningView(Context _context) {
         super(_context);
         initialize();
-
     }
 
-    public ViewNowlistening(Context _context, AttributeSet attrs) {
+    public NowListeningView(Context _context, AttributeSet attrs) {
         super(_context, attrs);
         initialize();
-
     }
 
-    public ViewNowlistening(Context _context, AttributeSet attrs, int defStyle) {
-
+    public NowListeningView(Context _context, AttributeSet attrs, int defStyle) {
         super(_context, attrs);
         initialize();
     }

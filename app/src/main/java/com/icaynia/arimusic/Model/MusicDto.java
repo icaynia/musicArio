@@ -1,4 +1,4 @@
-package com.icaynia.arimusic;
+package com.icaynia.arimusic.Model;
 
 import java.io.Serializable;
 

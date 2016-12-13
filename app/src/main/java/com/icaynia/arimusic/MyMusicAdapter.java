@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.icaynia.arimusic.Model.MusicDto;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;

@@ -9,6 +9,9 @@ import android.database.Cursor;
 import android.os.IBinder;
 import android.provider.MediaStore;
 
+import com.icaynia.arimusic.Model.MusicDto;
+import com.icaynia.arimusic.Service.musicService;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -52,7 +55,6 @@ public class Global extends Application {
         int randInt = random.nextInt(this.mediaList.size());
 
         this.playMusic(randInt);
-
     }
 
     public void getMusicList(){
